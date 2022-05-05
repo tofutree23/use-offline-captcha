@@ -1,7 +1,14 @@
 {
   "name": "usecaptcha",
   "version": "0.1.0",
+  "main": "dist/index.js",
   "private": false,
+  "babel": {
+    "presets": [
+      "@babel/preset-typescript",
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -17,7 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dist": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
+    "build": "rm -rf dist && mkdir dist && tsc",
+    "prepare": "yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +44,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7"
   }
 }
