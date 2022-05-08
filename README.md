@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# Use offline captcha
+This is React captcha hook for offline application.   
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**This hook does not communicate with the server. Only generate and validate code through Client logic. If security is critical, use is not recommended.**
 
-## Available Scripts
+# Usage
+```tsx
+import { useEffect, useState, useRef } from 'react'
+import useCaptcha from 'use-offline-captcha'
 
-In the project directory, you can run:
+export default function App() {
+    const captchaRef = useRef()
+    const [value, setValue] = useState()
+    const userOpt = {
+        type: 'mixed', // "mixed"(default) | "numeric" | "alpha" 
+        length: 5, // 1 to 8 number. default is 5
+        sensitive: false // Case sensitivity. default is false
+    }
+    const { gen, validate } = useCaptcha(captchaRef, userOpt)
 
-### `npm start`
+    useEffect(() => {
+        gen()
+    }, [])
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    const handleValidate = () => {
+        const isValid = validate(value)
+    }
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    return (
+        <>
+            <div ref={captchaRef} />
+            <input onChange={(e) => setValue(e.target.value)} value={value} />
+            <button onClick={handleValidate}>Validate</button>
+        </>
+  );
+}
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Options
+| Key | Description | Value |
+|--|--|--|
+| type | 'numeric' only comes with numbers and 'alpha' only with alphabets. 'mixed' comes in a mixed form, but it cannot be guaranteed that only mixed forms come out. default is 'mixed' | 'mixed', 'numeric', 'alpha' |
+| length | Set maximum length of captcha. default is 5 | 1 - 8 |
+| sensitive | Set case sensitivity. default is false | true or false |
