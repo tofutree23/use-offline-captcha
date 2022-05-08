@@ -1,5 +1,10 @@
 {
   "name": "usecaptcha",
+  "keywords": [
+    "react",
+    "captcha"
+  ],
+  "author": "Luke <tofutree23@gmail.com>",
   "version": "0.1.0",
   "main": "dist/index.js",
   "private": false,
