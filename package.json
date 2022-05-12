@@ -15,40 +15,24 @@
       "@babel/preset-react"
     ]
   },
-  "dependencies": {
+  "scripts": {
+    "build": "rm -rf dist && mkdir dist && tsc",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
     "@types/node": "^16.11.33",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.6.4"
-  },
-  "scripts": {
-    "build": "rm -rf dist && mkdir dist && tsc",
-    "prepare": "npm run build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
+    "@babel/core": "^7.17.10",
     "@babel/cli": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7"
+    "@babel/preset-typescript": "^7.16.7",
+    "typescript": "^4.6.4"
   }
 }

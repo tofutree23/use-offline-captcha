@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from "react";
 import { NUMBERS, ALPHABET } from "./constants";
 
-const lengthRange = [1, 2, 3, 4, 5, 6, 7, 8] as const;
+const lengthRange = [4, 5, 6, 7, 8] as const;
 type TLength = typeof lengthRange[number];
 
 interface IUserOpt {
