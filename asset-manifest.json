@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/use-offline-captcha/static/css/main.2c6a48fe.chunk.css",
+    "main.js": "/use-offline-captcha/static/js/main.fbf1784c.chunk.js",
+    "main.js.map": "/use-offline-captcha/static/js/main.fbf1784c.chunk.js.map",
+    "runtime-main.js": "/use-offline-captcha/static/js/runtime-main.f4c23e46.js",
+    "runtime-main.js.map": "/use-offline-captcha/static/js/runtime-main.f4c23e46.js.map",
+    "static/js/2.afa04d52.chunk.js": "/use-offline-captcha/static/js/2.afa04d52.chunk.js",
+    "static/js/2.afa04d52.chunk.js.map": "/use-offline-captcha/static/js/2.afa04d52.chunk.js.map",
+    "index.html": "/use-offline-captcha/index.html",
+    "precache-manifest.c5bde276b42c766615291c1690c8cd85.js": "/use-offline-captcha/precache-manifest.c5bde276b42c766615291c1690c8cd85.js",
+    "service-worker.js": "/use-offline-captcha/service-worker.js",
+    "static/css/main.2c6a48fe.chunk.css.map": "/use-offline-captcha/static/css/main.2c6a48fe.chunk.css.map",
+    "static/js/2.afa04d52.chunk.js.LICENSE.txt": "/use-offline-captcha/static/js/2.afa04d52.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4c23e46.js",
+    "static/js/2.afa04d52.chunk.js",
+    "static/css/main.2c6a48fe.chunk.css",
+    "static/js/main.fbf1784c.chunk.js"
+  ]
+}
