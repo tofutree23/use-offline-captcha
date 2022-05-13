@@ -20,7 +20,6 @@ const App = () => {
 
   const handleValidate = () => {
     const result = validate(value);
-    console.log(result);
     if (!result) gen();
 
     setValue("");

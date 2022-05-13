@@ -10,6 +10,8 @@ interface IUserOpt {
   sensitive?: boolean;
   width?: number;
   height?: number;
+  fontColor?: string;
+  background?: string;
 }
 
 interface ReturnValue {
@@ -31,7 +33,9 @@ export default function useOfflineCaptcha(
       length = 5,
       sensitive = false,
       width = 200,
-      height = 100,
+      height = 50,
+      fontColor = "#000",
+      background = "rgba(255, 255, 255, .2)",
     } = UserOpt;
 
     if (!lengthRange.includes(length)) {
@@ -73,7 +77,10 @@ export default function useOfflineCaptcha(
       canvas.width = width;
       canvas.height = height;
       canvas.setAttribute("id", "offline-captcha-canvas-area");
-      canvas.setAttribute("style", "border: 1px solid black");
+      canvas.setAttribute(
+        "style",
+        `border: 1px solid black; background: ${background}`
+      );
       element.appendChild(canvas);
 
       const ctx = canvas.getContext("2d");
@@ -102,14 +109,16 @@ export default function useOfflineCaptcha(
           const space = width / string.length;
           const initial = 5;
 
-          ctx!.font = `2rem ${
+          ctx!.font = `2em ${
             textFonts[getRandomNumber(0, textFonts.length - 1)]
           }`;
+
+          ctx!.fillStyle = fontColor;
 
           ctx!.fillText(
             string[i],
             initial + i * space,
-            getRandomNumber(canvas.height, canvas.height - 20),
+            getRandomNumber(30, canvas.height - 10),
             200
           );
         }

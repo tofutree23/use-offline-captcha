@@ -25,7 +25,9 @@ export default function App() {
         length: 5, // 4 to 8 number. default is 5
         sensitive: false, // Case sensitivity. default is false
         width: 200, // Canvas width. default is 200
-        height: 100 // Canvas height. default is 100
+        height: 50, // Canvas height. default is 50
+        fontColor: '#000',
+        background: 'rgba(255, 255, 255, .2)'
     }
     const { gen, validate } = useCaptcha(captchaRef, userOpt)
 
@@ -57,7 +59,9 @@ export default function App() {
 | length | Set maximum length of captcha. default is 5 | 4 - 8 |
 | sensitive | Set case sensitivity. default is false | true or false |
 | width | Set captcha canvas width. default is 200 | |
-| height | Set captcha canvas height. default is 100 | |
+| height | Set captcha canvas height. default is 50 | |
+| fontColor | Set captcha canvas font color. default is #000 | |
+| background | Set captcha canvas background color. default is rgba(255, 255, 255, .2) | |
 
 ## License
 
