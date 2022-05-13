@@ -31,7 +31,7 @@ export default function useOfflineCaptcha(
       length = 5,
       sensitive = false,
       width = 200,
-      height = 50,
+      height = 100,
     } = UserOpt;
 
     if (!lengthRange.includes(length)) {
