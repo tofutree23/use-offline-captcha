@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from "react";
+import * as React from "react";
 import { NUMBERS, ALPHABET } from "./constants";
 
 const lengthRange = [4, 5, 6, 7, 8] as const;
@@ -6,8 +6,10 @@ type TLength = typeof lengthRange[number];
 
 interface IUserOpt {
   type: "mixed" | "numeric" | "alpha";
-  length: TLength;
-  sensitive: boolean;
+  length?: TLength;
+  sensitive?: boolean;
+  width?: number;
+  height?: number;
 }
 
 interface ReturnValue {
@@ -15,16 +17,26 @@ interface ReturnValue {
   validate: (string: string) => boolean;
 }
 
-export default function useCaptcha(
-  ref: RefObject<HTMLElement>,
+export default function useOfflineCaptcha(
+  ref: React.RefObject<HTMLElement>,
   UserOpt: IUserOpt
 ): ReturnValue {
-  const [captcha, setCaptcha] = useState<ReturnValue>();
+  const [captcha, setCaptcha] = React.useState<ReturnValue>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!ref.current) return;
 
-    const { type = "mixed", length = 5, sensitive = false } = UserOpt;
+    let {
+      type = "mixed",
+      length = 5,
+      sensitive = false,
+      width = 200,
+      height = 50,
+    } = UserOpt;
+
+    if (!lengthRange.includes(length)) {
+      length = 5;
+    }
 
     const element = ref.current;
 
@@ -49,10 +61,18 @@ export default function useCaptcha(
     }
 
     function gen() {
+      const prevCaptcha = document.getElementById(
+        "offline-captcha-canvas-area"
+      );
+      if (prevCaptcha) {
+        element.removeChild(prevCaptcha);
+      }
+
       const canvas = document.createElement("canvas");
 
-      canvas.width = element.offsetWidth;
-      canvas.height = element.offsetHeight;
+      canvas.width = width;
+      canvas.height = height;
+      canvas.setAttribute("id", "offline-captcha-canvas-area");
       canvas.setAttribute("style", "border: 1px solid black");
       element.appendChild(canvas);
 
@@ -79,8 +99,8 @@ export default function useCaptcha(
       function drawText(string: string) {
         const textFonts = ["Arial", "Georgia", "Helvetica", "Impact"];
         for (let i = 0; i < string.length; i++) {
-          const space = 170 / string.length;
-          const initial = 15;
+          const space = width / string.length;
+          const initial = 5;
 
           ctx!.font = `2rem ${
             textFonts[getRandomNumber(0, textFonts.length - 1)]
@@ -89,7 +109,7 @@ export default function useCaptcha(
           ctx!.fillText(
             string[i],
             initial + i * space,
-            getRandomNumber(30, canvas.height - 20),
+            getRandomNumber(canvas.height, canvas.height - 20),
             200
           );
         }
