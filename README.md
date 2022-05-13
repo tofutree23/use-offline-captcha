@@ -12,6 +12,9 @@ This is React captcha hook for offline application.
 npm install --save use-offline-captcha
 ```
 
+## Preview
+[Demo](https://tofutree23.github.io/use-offline-captcha/)
+
 ## Usage
 ```tsx
 import { useEffect, useState, useRef } from 'react'
