@@ -1,6 +1,6 @@
 {
   "name": "use-offline-captcha",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This is simple react offline captcha library.",
   "author": "Luke <tofutree23@gmail.com>",
   "license": "MIT",
